@@ -2,8 +2,13 @@
 	width: 100%;
 }
 
-.newGame{
-	margin-top: 20px;
+.gameDisk{
+	height: 5vw;
+	border: 1px solid black;
+}
+
+.startGame{
+	margin-bottom: 1em;
 }
 
 .invisible{
