@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<title>Towers</title>
+	<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<body >
+
+<div class="container">
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<h1 class="title col-sm-8">Towers of Hanoi</h1>
+			<button class="newGame col-sm-2">NewGame</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<form type="submit" action="submit" class="invisible disksSelection col-sm-12">
+			<span class="col-sm-3"> Number of Disks:</span>
+			<label for="disks3" class="col-sm-1 disks">3</label>
+			<input type="radio" name="disks" value="3" id="disks3" class="col-sm-1 disks"> 
+			<label for="disks4" class="col-sm-1">4</label>
+			<input type="radio" name="disks" value="4" id="disks4" class="col-sm-1 disks"> 	
+			<label for="disks5" class="col-sm-1">5</label>
+			<input type="radio" name="disks" value="5" id="disks5" class="col-sm-1 disks"> 
+			<label for="disks6" class="col-sm-1">6</label>
+			<input type="radio" name="disks" value="6" id="disks6" class="col-sm-1 disks"> 
+		</form>
+	</div>
+
+	<div class="row">
+
+		<div class="tower col-sm-4" id="one" >
+			<div class="row">
+				<div class="stack col-sm-12" id="s1"></div>
+			</div>
+		</div>
+
+		<div class="tower col-sm-4" id="two">
+			<div class="row">
+				<div class="stack col-sm-12" id="s2"></div>
+			</div>
+		</div>
+
+			<div class="tower col-sm-4" id="three">
+				<div class="row">
+					<div class="stack col-sm-12" id="s3"></div>
+				</div>
+			</div>
+
+	</div>
+</div>
+	
+<script src="bower_components/jquery/dist/jquery.min.js"></script>	
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
