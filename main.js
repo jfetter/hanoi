@@ -26,19 +26,17 @@ function generateDisks(diskCount){
 	$("#s1").empty();
 	console.log("generating " + diskCount + " disks");
 	diskCount ++;
-	var diskRow = [];
-		//make diskCount disks of increasing in size upto the full width of their container (12)
+//make diskCount disks of increasing in size upto the full width of their container (12)
 	for (var i =1 ; i < diskCount; i ++){
-		var $div = $('<div class="row gameDisk">');
-		// change to have blocks sized and stacked appropriately;
-		$div.addClass("col-sm-" + i*2 + "offset-" + 12 - (i*2) );
+		var $row = $('<div class="row">')
+		var $div = $('<div class="gameDisk">');
+		$div.addClass("col-sm-" + i*2 );
 		$div.attr("data-value", i );
-		// change to have css generate a random color
+// change to have css generate a random color
 		$div.css("background-color", "pink" );
-		$("#s1").append($div);
-		// I dont think I'll need the array; 
-		diskRow.push($div)
-		console.log(diskRow);
+		$row.append($div);
+		$("#s1").append($row);
+
 		//$(".gameDisk").on("click", removeDisk);
 		//$(".tower").on("click", tryToPlaceDisk);
 	}
