@@ -2,10 +2,13 @@
 
 $(document).ready(init)
 
+var $detached; 
+
 function init(){
 	$(".disks").on("change", setDifficulty);
 	$(".startGame").on("click", hideDiskSelect);
 	$(".quit").on("click", reset);
+	$(".tower").on("click", moveDisk);
 }
 
 function hideDiskSelect () {
@@ -37,32 +40,32 @@ console.log("generating " + diskCount + " disks");
 		$row.append($div);
 		$("#s1").append($row);
 	}
-	$(".tower").on("click", moveDisk);
-	
 }
 
 function moveDisk (event) {
+// dont allow pieces to be moved until start game has been clicked
   if ($(".quit").hasClass("invisible"))
   	return
-	var $selectedTower = $(this)
-	var $selectedStack = $("div.stack");
-	var $selectedDisk = $selectedTower.find($selectedStack).children().first()
-$selectedDisk.detach();
-	//if anything on the page is currently detached
-	// if ($(this).find(".detached")){
-	// 	console.log($("detached", ".detached"))
-	// 	//place disk on top of the stack (if its value is smaller... or blink screen if its not smaller)
-	// } else {
-	//if there is no disks in the column clicked -- flash the screen	
-// $selectedDisk.addClass("detached");
-// console.log("THIS ONE IS DETACHED", $(".detached"))
-// $(".detached").detach()
-	//}
+	var $selectedTower = $(this);
+	console.log("tower", $selectedTower.attr("id"))
+	var stack = $("div.stack");
+	var $selectedStack = $selectedTower.find(stack);
+	console.log("stack" ,$selectedStack.attr("id"))
+	var $selectedDisk = $selectedStack.children().first();
+	console.log("Disk", $detached)
+	if ($(".disksSelection").hasClass("diskDetached")){
+console.log("DETACHED 2", $(".detached"))
+console.log("SELECTEDSTACK", $selectedStack.attr("id"))
+		$selectedStack.append($detached)
+		//$("diskDetached").removeClass("diskDetached")
+		return
+	}
+	$(".disksSelection").addClass("diskDetached");
+	$detached = $selectedDisk.addClass("detached")
+	console.log("detached one", $detached)
+	$(".detached").detach();
 }
 
-// function detach	(event){
-// 	console.log("detached" + $(this))
-// }
 
 
 
