@@ -43,31 +43,29 @@ console.log("generating " + diskCount + " disks");
 }
 
 function moveDisk (event) {
+	var $selectedTower = $(this);
+	var $selectedStack = $selectedTower.find("div.stack");
+	var $selectedDisk = $selectedStack.children().first();
 // dont allow pieces to be moved until start game has been clicked
   if ($(".quit").hasClass("invisible"))
   	return
-	var $selectedTower = $(this);
-	console.log("tower", $selectedTower.attr("id"))
-	var stack = $("div.stack");
-	var $selectedStack = $selectedTower.find(stack);
-	console.log("stack" ,$selectedStack.attr("id"))
-	var $selectedDisk = $selectedStack.children().first();
-	console.log("Disk", $detached)
 	if ($(".disksSelection").hasClass("diskDetached")){
-console.log("DETACHED 2", $(".detached"))
-console.log("SELECTEDSTACK", $selectedStack.attr("id"))
-		$selectedStack.append($detached)
-		//$("diskDetached").removeClass("diskDetached")
-		return
-	}
+		//if(Number($detached.attr("data-value")) < Number($selectedDisk.attr("data-value")) || !$selectedDisk){
+			$selectedStack.prepend($detached)
+			$(".diskDetached").removeClass("diskDetached")
+			return	
+	//	} else {
+			return flashScreen();
+		}
 	$(".disksSelection").addClass("diskDetached");
-	$detached = $selectedDisk.addClass("detached")
-	console.log("detached one", $detached)
-	$(".detached").detach();
+	$detached = $selectedDisk
+	$detached.detach();
 }
 
-
-
+function flashScreen(){
+	$("*").addClass("black");
+	$("*").removeClass("black");
+}
 
 function reset(){
 	location.reload();

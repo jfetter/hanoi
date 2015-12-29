@@ -11,10 +11,6 @@
 	margin-bottom: 1em;
 }
 
-.invisible{
-	display: none;
-}
-
 .title{
 	font-family: sans-serif;
 	font-weight: bold;
@@ -36,4 +32,12 @@ span{
   bottom: 0;
 	background-color: orange;
 	border: 1px solid black;
+}
+
+.invisible{
+	display: none;
+}
+
+.black{
+	background-color: black;
 }
