@@ -56,8 +56,13 @@ function moveDisk (event) {
 		if ($(".disksSelection").hasClass("diskDetached")){
 				moves ++;
 			if(Number($detached.data("value")) < Number($selectedDisk.data("value")) || !$selectedDisk.data("value")){
-				$selectedStack.prepend($detached)
-				$(".diskDetached").removeClass("diskDetached")
+				$selectedStack.prepend($detached);
+				$(".diskDetached").removeClass("diskDetached");
+				console.log("s3 length" , $("#s3").find("div.gameDisk").length);
+				console.log("numb of disks", $(".towers").find("div.gameDisk").length);
+				if($("#s3").find("div.gameDisk").length === $(".towers").find("div.gameDisk").length){
+					win();
+				}
 				return	
 			} else {
 				flashScreen();
@@ -74,6 +79,13 @@ function flashScreen(){
 	setTimeout(function(){
 	$("*").removeClass("black");
 	},200);
+}
+
+function win (){
+	var $winner = $('<h1 class="row">')
+	$winner.text("YOU WON!");
+	$(".towers").addClass("invisible")
+	$("form").prepend($winner);
 }
 
 function reset(){
