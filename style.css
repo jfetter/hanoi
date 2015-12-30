@@ -1,5 +1,11 @@
 .container{
 	width: 100%;
+	background-color: purple;
+}
+
+.diskRow{
+	text-align: center;
+	float:none;
 }
 
 .gameDisk{
@@ -23,15 +29,20 @@ span{
 .tower{
 	width: 100vw;
 	height: 90vh;
-	background-color: green;
+	background-color: white;
 	border: 1px solid black;
+	bottom:0;
 }
 
 .stack{
 	position: absolute;
   bottom: 0;
-	background-color: orange;
+	background-color: white;
 	border: 1px solid black;
+}
+
+.quit{
+	margin: 5vw;
 }
 
 .invisible{

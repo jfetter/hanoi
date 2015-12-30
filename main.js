@@ -29,24 +29,26 @@ function setDifficulty(event){
 
 function generateDisks(diskCount){
 	$("#s1").empty();
+	var color = ["red", "yellow", "blue", "orange", "pink", "purple", "white"]
 console.log("generating " + diskCount + " disks");
 	diskCount ++;
 //make diskCount disks of increasing in size upto the full width of their container (12)
 	for (var i =1 ; i < diskCount; i ++){
-		var $row = $('<div class="row">')
-		var $div = $('<div class="gameDisk">');
+		var $row = $('<div class="row diskRow">')
+		var $div = $('<div class="col-centered gameDisk">');
 		$div.addClass("col-sm-" + i*2 );
 	//	$div.attr("data-value", i );
 // change to have css generate a random color
-		$div.css("background-color", "pink" );
-		$row.data("value", i)
+
+		$div.css("background-color", color[i-1] );
+		$row.data("value", i);
 		$row.append($div);
 		$("#s1").append($row);
 	}
 }
 
 function moveDisk (event) {
-	$(".moves").text("Moves: " + moves)
+	$(".moves").text("Moves: " + moves);
 	var $selectedTower = $(this);
 	var $selectedStack = $selectedTower.find("div.stack");
 	var $selectedDisk = $selectedStack.children().first();
@@ -54,14 +56,14 @@ function moveDisk (event) {
 	  if ($(".quit").hasClass("invisible"))
 	  	return
 		if ($(".disksSelection").hasClass("diskDetached")){
-				moves ++;
+				moves ++; 
 			if(Number($detached.data("value")) < Number($selectedDisk.data("value")) || !$selectedDisk.data("value")){
 				$selectedStack.prepend($detached);
 				$(".diskDetached").removeClass("diskDetached");
-				console.log("s3 length" , $("#s3").find("div.gameDisk").length);
-				console.log("numb of disks", $(".towers").find("div.gameDisk").length);
+				//console.log("s3 length" , $("#s3").find("div.gameDisk").length);
+				//console.log("numb of disks", $(".towers").find("div.gameDisk").length);
 				if($("#s3").find("div.gameDisk").length === $(".towers").find("div.gameDisk").length){
-					win();
+				win();
 				}
 				return	
 			} else {
@@ -83,8 +85,7 @@ function flashScreen(){
 
 function win (){
 	var $winner = $('<h1 class="row">')
-	$winner.text("YOU WON!");
-	$(".towers").addClass("invisible")
+	$winner.text("YOU WON!").css("color", "blue").css("text-align", "center");
 	$("form").prepend($winner);
 }
 
